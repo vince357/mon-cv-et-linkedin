@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>CV – Vincent de la Fonchais, consultant et auditeur en accessibilité numérique</title>
+<meta name="author" content="Vincent de la Fonchais">
+<style>
+  @font-face { font-family: "InterCV"; src: url("polices/inter-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+  @font-face { font-family: "InterCV"; src: url("polices/inter-latin-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
+  @font-face { font-family: "InterCV"; src: url("polices/inter-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; }
+  @font-face { font-family: "InterCV"; src: url("polices/inter-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; }
+  :root {
+    --vert: #1E5B3A;        /* 8:1 sur blanc */
+    --vert-clair: #EEF5EF;  /* fond de la colonne latérale */
+    --orange: #B54708;      /* liserés et puces uniquement */
+    --vert-pastel: #A9D8B8; /* liseré sous le bandeau */
+    --texte: #1A1A1A;
+  }
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: "InterCV", Inter, sans-serif; font-size: 8.6pt; line-height: 1.34; color: var(--texte); background: #fff;
+         width: 210mm; height: 297mm; display: flex; flex-direction: column; }
+  a { color: inherit; text-decoration: underline; text-underline-offset: 1.5px; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  p { margin: 0 0 1.6mm; }
+
+  /* Bandeau */
+  header { background: var(--vert); color: #fff; display: flex; align-items: center; gap: 7mm;
+           padding: 6mm 12mm 5.5mm; border-bottom: 1.6mm solid var(--vert-pastel); }
+  header img { width: 30mm; height: 30mm; border-radius: 50%; border: 0.8mm solid #fff; flex: none; }
+  h1 { font-size: 23pt; line-height: 1.1; margin: 0 0 1mm; font-weight: 700; letter-spacing: -0.2pt; }
+  .titre { font-size: 12.5pt; font-weight: 600; color: #fff; margin: 0 0 3mm; }
+  .contacts { display: flex; flex-wrap: wrap; gap: 1mm 5mm; font-size: 8.8pt; }
+  .contacts li span { font-weight: 600; }
+
+  /* Corps en deux colonnes */
+  .corps { flex: 1; display: grid; grid-template-columns: 1fr 66mm; }
+  main { padding: 5mm 7mm 3mm 12mm; }
+  aside { background: var(--vert-clair); padding: 5mm 9mm 5mm 7mm; }
+
+  h2 { font-size: 11pt; color: var(--vert); margin: 0 0 2mm; padding-bottom: 1mm; font-weight: 700;
+       border-bottom: 0.5mm solid var(--orange); }
+  section + section { margin-top: 4mm; }
+  h3 { font-size: 9.2pt; color: var(--vert); margin: 2.6mm 0 1mm; font-weight: 700; }
+  h2 + h3, h2 + p + h3 { margin-top: 0; }
+
+  .puces li { position: relative; padding-left: 3.4mm; margin-bottom: 1.1mm; }
+  .puces li::before { content: ""; position: absolute; left: 0.3mm; top: 1.55mm; width: 1.3mm; height: 1.3mm;
+                      border-radius: 50%; background: var(--orange); }
+  strong { font-weight: 600; }
+  .perimetre { font-style: italic; }
+  .poste { margin: 0; }
+  .poste + p { margin-top: 1.2mm; }
+  .dates { color: var(--vert); font-weight: 600; white-space: nowrap; }
+  .employeur { margin-top: 0; }
+
+  aside h2 { font-size: 10.2pt; }
+  aside section + section { margin-top: 3.4mm; }
+  aside .puces li { margin-bottom: 1mm; }
+  .formation li { margin-bottom: 1.6mm; }
+  .meta { display: block; color: #3A3A3A; }
+  .etiquette { font-weight: 600; color: var(--vert); }
+
+  /* Version une page : les deux paragraphes du profil se suivent sur la même ligne */
+  body:not(.deux-pages) .profil p { display: inline; }
+  body:not(.deux-pages) .profil .motivation::before { content: " "; }
+  body:not(.deux-pages) .profil .motivation strong { font-weight: 400; }
+
+  /* ===== Version aérée sur deux pages (classe ajoutée par pdf.js) ===== */
+  body.deux-pages { font-size: 9.6pt; line-height: 1.52; height: 594mm; }
+  .deux-pages header { padding: 9mm 14mm 8mm; gap: 9mm; }
+  .deux-pages header img { width: 36mm; height: 36mm; }
+  .deux-pages h1 { font-size: 26pt; margin-bottom: 1.5mm; }
+  .deux-pages .titre { font-size: 14pt; margin-bottom: 4mm; }
+  .deux-pages .contacts { font-size: 9.6pt; gap: 1.5mm 6mm; }
+  .deux-pages .corps { grid-template-columns: 1fr 70mm; }
+  .deux-pages main { padding: 9mm 10mm 9mm 14mm; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .deux-pages aside { padding: 10mm 10mm 10mm 9mm; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+  .deux-pages h2 { font-size: 13pt; margin-bottom: 3.5mm; padding-bottom: 1.5mm; }
+  .deux-pages aside h2 { font-size: 12pt; }
+  .deux-pages h3 { font-size: 10.6pt; margin: 4.5mm 0 1.8mm; }
+  .deux-pages .poste { margin-bottom: 1mm; }
+  .deux-pages p { margin-bottom: 2.6mm; }
+  .deux-pages section + section { margin-top: 7mm; }
+  .deux-pages aside section + section { margin-top: 7mm; }
+  .deux-pages .puces li { padding-left: 4mm; margin-bottom: 1.9mm; }
+  .deux-pages .puces li::before { top: 2mm; width: 1.5mm; height: 1.5mm; }
+  .deux-pages .formation li { margin-bottom: 3mm; }
+  .deux-pages .profil p { font-size: 11pt; line-height: 1.5; }
+  .deux-pages .profil .motivation { margin-top: 3mm; padding-left: 3.5mm; border-left: 0.8mm solid var(--orange); }
+  .deux-pages .saut { break-before: page; margin-top: 0; }
+</style>
+</head>
+<body>
+<script>
+  // Version aérée sur deux pages : ouvrir cv.html?deux-pages
+  if (location.search.includes('deux-pages')) document.body.classList.add('deux-pages');
+</script>
+<header>
+  <img src="photo.jpg" alt="">
+  <div>
+    <h1>Vincent de la Fonchais</h1>
+    <p class="titre">Consultant et auditeur en accessibilité numérique</p>
+    <ul class="contacts">
+      <li>Région parisienne</li>
+      <li><span>Tél.</span> <a href="tel:+33663026357">06 63 02 63 57</a></li>
+      <li><span>E-mail</span> <a href="mailto:vince357@gmail.com">vince357@gmail.com</a></li>
+      <li><span>LinkedIn</span> <a href="https://www.linkedin.com/in/vincent-de-la-fonchais/">linkedin.com/in/vincent-de-la-fonchais</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="corps">
+<main>
+  <section class="profil">
+    <h2>Profil</h2>
+    <p>Développeur front et responsable UX pendant 30 ans, cofondateur de l’agence web ITNetwork, je mets aujourd’hui cette double expérience, technique et utilisateur, au service de l’accessibilité numérique. Je comprends pourquoi un composant bloque un lecteur d’écran ou la navigation au clavier, et je sais proposer des corrections réalistes aux équipes, adaptées à leurs moyens et à leurs priorités.</p>
+    <p class="motivation"><strong>Ce qui me motive</strong> : l’utilité sociale et l’accès de tous à l’information.</p>
+  </section>
+
+  <section>
+    <h2>Offres de services</h2>
+    <p class="perimetre">Sites et applications web, selon le RGAA.</p>
+    <h3>Évaluer</h3>
+    <ul class="puces">
+      <li><strong>Audit de conformité RGAA</strong> : évaluation complète d’un échantillon de pages représentatif, rapport des non-conformités avec recommandations de correction, taux de conformité.</li>
+      <li><strong>Pré-audit</strong> : état des lieux rapide des principaux blocages, pour prioriser et planifier la mise en conformité.</li>
+      <li><strong>Tests avec les technologies d’assistance</strong> : parcours clés vérifiés au lecteur d’écran et au clavier, du point de vue de l’utilisateur.</li>
+    </ul>
+    <h3>Mettre en conformité</h3>
+    <ul class="puces">
+      <li><strong>Accompagnement des corrections et contre-audit</strong> : appui aux développeurs pendant les correctifs, puis vérification et nouveau taux de conformité.</li>
+      <li><strong>Déclaration d’accessibilité et schéma pluriannuel</strong> : rédaction des documents obligatoires pour les organismes concernés.</li>
+    </ul>
+    <h3>Anticiper et transmettre</h3>
+    <ul class="puces">
+      <li><strong>Revue de maquettes et de prototypes</strong> : repérage des problèmes dès la conception, avant le développement, quand les corriger coûte le moins.</li>
+      <li><strong>Sensibilisation et formation</strong> : ateliers pour les équipes de conception, de développement et de contenu.</li>
+    </ul>
+  </section>
+
+  <section class="saut">
+    <h2>Expérience</h2>
+    <h3 class="employeur">ITNetwork, Paris · agence de développement web</h3>
+    <p class="poste"><strong>Cofondateur et associé</strong> · <span class="dates">depuis 1996</span></p>
+    <p class="poste"><strong>Développeur front, responsable UX et chef de projet</strong> · <span class="dates">1996 – 2026</span></p>
+    <p>Graphiste et intégrateur, puis développeur front, responsable UX et chef de projet, pour des collectivités, des institutions et des entreprises. Application du RGAA et des WCAG dans mes intégrations.</p>
+    <ul class="puces">
+      <li><strong>IFprofs</strong> (<a href="https://ifprofs.org/">ifprofs.org</a>), pour l’Institut français, sous la tutelle du ministère de l’Europe et des Affaires étrangères et du ministère de la Culture : conception graphique et développement front du réseau social mondial des professeurs de français, plus de 30 000 membres. Conformité RGAA exigée par l’appel d’offres.</li>
+      <li><strong>Musée du Grand Siècle (Département des Hauts-de-Seine)</strong> : développement front du site.</li>
+      <li><strong>Département de l’Essonne</strong> : extranet de commande pour les communes, doublé d’un réseau social privé.</li>
+      <li><strong>FCBA</strong> : conception et développement de nombreux sites WordPress sur mesure.</li>
+      <li><strong>Et de nombreux autres sites et extranets</strong> : conception UI/UX, intégration et développement front (WordPress, Symfony, React, PHP).</li>
+      <li>Optimisation des performances des sites, avec des notions d’éco-conception, et création de design systems.</li>
+      <li>Encadrement d’un développeur front et de nombreux alternants.</li>
+    </ul>
+  </section>
+</main>
+
+<aside>
+  <section>
+    <h2>Formation</h2>
+    <ul class="puces formation">
+      <li><strong>Auditer l’accessibilité numérique des sites web (RGAA)</strong>
+        <span class="meta">Access42 · octobre 2026</span></li>
+      <li><strong>Développer des sites web accessibles et conformes au RGAA</strong>
+        <span class="meta">Access42 · septembre 2026</span></li>
+      <li><strong>Parcours scientifique</strong>
+        <span class="meta">Baccalauréat série C (1990)</span>
+        <span class="meta">Cursus DEUG A, université Paris VII (1990 – 1992)</span>
+        <span class="meta">Cursus BTS géomètre-topographe en alternance (1992 – 1994)</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Compétences</h2>
+    <ul class="puces">
+      <li><span class="etiquette">Accessibilité</span> : RGAA, WCAG, WAI-ARIA, VoiceOver, NVDA, Colour Contrast Analyser, extensions et bookmarklets d’audit, grille d’audit RGAA</li>
+      <li><span class="etiquette">Développement</span> : HTML, CSS, Sass, JavaScript, Node.js, React, PHP, Symfony, MySQL, WordPress, Git et GitHub, performance web</li>
+      <li><span class="etiquette">Conception</span> : UX, design systems, Figma, Photoshop, Illustrator, Affinity</li>
+    </ul>
+  </section>
+
+  <section class="saut">
+    <h2>Savoir-être</h2>
+    <ul class="puces">
+      <li>Écoute et compréhension des besoins</li>
+      <li>Pédagogie et goût de transmettre</li>
+      <li>Rigueur et sens de l’organisation</li>
+      <li>Diplomatie et sens de la négociation</li>
+      <li>Pragmatisme</li>
+      <li>Adaptabilité et curiosité</li>
+      <li>Autonomie et travail en équipe</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Langues</h2>
+    <ul class="puces">
+      <li><span class="etiquette">Français</span> : langue maternelle</li>
+      <li><span class="etiquette">Anglais</span> : scolaire et technique</li>
+    </ul>
+  </section>
+</aside>
+</div>
+</body>
+</html>

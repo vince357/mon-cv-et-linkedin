@@ -1,0 +1,5 @@
+**/cv-sources/.venv
+**/formations/
+bilan-de-competences/
+.DS_Store
+__pycache__/
