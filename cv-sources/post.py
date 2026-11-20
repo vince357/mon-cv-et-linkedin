@@ -1,5 +1,6 @@
 import pikepdf, sys
 src, dst = sys.argv[1], sys.argv[2]
+nom = sys.argv[3] if len(sys.argv) > 3 else 'Vincent de la Fonchais'
 pdf = pikepdf.open(src)
 pdf.Root.Lang = pikepdf.String('fr-FR')
 lib = {'tel:': 'Appeler le ', 'mailto:': 'Écrire à ', 'https://www.linkedin.com': 'Profil LinkedIn de Vincent de la Fonchais'}
@@ -12,7 +13,7 @@ for a in [a for pg in pdf.pages for a in pg.get('/Annots', [])]:
         else: t = 'Profil LinkedIn de Vincent de la Fonchais'
         a.Contents = pikepdf.String(t)
 with pdf.open_metadata() as m:
-    m['dc:title'] = 'CV – Vincent de la Fonchais, consultant et auditeur en accessibilité numérique'
-    m['dc:creator'] = ['Vincent de la Fonchais']
+    m['dc:title'] = f'CV – {nom}, consultant et auditeur en accessibilité numérique'
+    m['dc:creator'] = [nom]
     m['dc:language'] = ['fr-FR']
 pdf.save(dst)

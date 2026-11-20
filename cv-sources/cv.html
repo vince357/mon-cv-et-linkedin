@@ -204,5 +204,20 @@
   </section>
 </aside>
 </div>
+<script>
+  // Version « sous-traitant » pour une réponse à un marché : ouvrir cv.html?sous-traitant
+  // Nom abrégé, sans coordonnées directes (rattachement à l'entité qui répond au marché).
+  if (location.search.includes('sous-traitant')) {
+    document.title = 'CV – Vincent D., consultant et auditeur en accessibilité numérique';
+    document.querySelector('meta[name="author"]').content = 'Vincent D.';
+    document.querySelector('h1').textContent = 'Vincent D.';
+    document.querySelectorAll('.contacts li').forEach(li => { if (li.querySelector('a')) li.remove(); });
+    // Sans mention d'ITNetwork
+    const profil = document.querySelector('.profil p');
+    profil.innerHTML = profil.innerHTML.replace('cofondateur de l’agence web ITNetwork', 'cofondateur d’une agence web');
+    document.querySelector('.employeur').textContent = 'Agence de développement web, Paris';
+    document.querySelectorAll('.poste').forEach(p => { if (p.textContent.includes('Cofondateur')) p.remove(); });
+  }
+</script>
 </body>
 </html>
